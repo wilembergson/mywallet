@@ -1,5 +1,19 @@
 import styled from "styled-components"
 
+export const MainLoginRegister = styled.main`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 90vh;
+    padding: 25px;
+`
+export const Main = styled.main`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 25px;
+`
 export const Logo = styled.h1`
     font-family: 'Saira Stencil One';
     font-style: normal;
@@ -16,7 +30,7 @@ export const Form = styled.form`
     width: 100%;
 `
 export const Input = styled.input`
-    width: 326px;
+    width: 296px;
     background: #FFFFFF;
     border-radius: 5px;
     font-family: 'Raleway';
@@ -30,7 +44,7 @@ export const Input = styled.input`
     padding:15px;
 `
 export const Button = styled.button`
-    width: 356px;
+    width: 326px;
     height: 46px;
     background: #A328D6;
     border-radius: 5px;
@@ -49,5 +63,20 @@ export const Label = styled.label`
     font-weight: 700;
     font-size: 15px;
     line-height: 18px;
+    color: #FFFFFF;
+`
+export const Header = styled.header`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    top: 0;
+`
+export const Title = styled.h1`
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 31px;
     color: #FFFFFF;
 `

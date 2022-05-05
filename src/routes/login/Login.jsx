@@ -1,8 +1,8 @@
-import { Button, Form, Input, Label, Logo } from "../../comonents/StyledLoginAndRegister"
+import { Button, Form, Input, Label, Logo, MainLoginRegister } from "../../comonents/StyledComponents"
 
 export default function Login(){
     return(
-        <main>
+        <MainLoginRegister>
             <Logo>MyWallet</Logo>
             <Form>
                 <Input type="text" placeholder="Email" />
@@ -10,7 +10,7 @@ export default function Login(){
                 <Button>Entrar</Button>
             </Form>
             <Label>Primeira vez? Cadastre-se!</Label>
-        </main>
+        </MainLoginRegister>
     )
 }
 

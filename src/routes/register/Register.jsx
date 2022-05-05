@@ -1,8 +1,8 @@
-import { Button, Form, Input, Label, Logo } from "../../comonents/StyledLoginAndRegister";
+import { Button, Form, Input, Label, Logo, MainLoginRegister } from "../../comonents/StyledComponents";
 
 export default function Register(){
     return(
-        <main>
+        <MainLoginRegister>
             <Logo>MyWallet</Logo>
             <Form>
                 <Input type="text" placeholder="Nome" />
@@ -12,6 +12,6 @@ export default function Register(){
                 <Button>Cadastrar-se</Button>
             </Form>
             <Label>Já tem uma conta? Entre agora!</Label>
-        </main>
+        </MainLoginRegister>
     )
 }
