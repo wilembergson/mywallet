@@ -2,9 +2,13 @@ import { Header, Main, Title } from "../../comonents/StyledComponents";
 import {AiOutlineExport} from 'react-icons/ai'
 import {AiOutlinePlusCircle} from 'react-icons/ai'
 import {AiOutlineMinusCircle} from 'react-icons/ai'
+import {useNavigate} from 'react-router-dom'
 import styled from 'styled-components'
 
+
 export default function MainScreen(){
+    const navigate = useNavigate()
+
     return(
         <Main>
             <Header>
@@ -13,12 +17,12 @@ export default function MainScreen(){
             </Header>
             <Balance/>
             <Footer>
-                <Operation>
+                <Operation onClick={()=> navigate('/new-deposit')}>
                     <AiOutlinePlusCircle size={25}/>
                     <Label>Nova</Label>
                     entrada
                 </Operation>
-                <Operation>
+                <Operation onClick={()=> navigate('/new-exit')}>
                     <AiOutlineMinusCircle size={25}/>
                     <Label>Nova</Label>
                     saida

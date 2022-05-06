@@ -21,13 +21,13 @@ export const Logo = styled.h1`
     font-size: 32px;
     line-height: 50px;
     color: #FFFFFF;
-    margin-bottom: 24px;
 `
 export const Form = styled.form`
     display: flex;
     align-items: center;
     flex-direction: column;
     width: 100%;
+    margin-top: 24px;
 `
 export const Input = styled.input`
     width: 296px;
