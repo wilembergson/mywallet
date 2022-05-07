@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom"
 import { Button, Form, Input, Label, Logo, MainLoginRegister } from "../../comonents/StyledComponents"
 
 export default function Login(){
+    const navigate = useNavigate()
     return(
         <MainLoginRegister>
             <Logo>MyWallet</Logo>
@@ -9,7 +11,7 @@ export default function Login(){
                 <Input type="password" placeholder="Senha" />
                 <Button>Entrar</Button>
             </Form>
-            <Label>Primeira vez? Cadastre-se!</Label>
+            <Label onClick={() => navigate('/')}>Primeira vez? Cadastre-se!</Label>
         </MainLoginRegister>
     )
 }
