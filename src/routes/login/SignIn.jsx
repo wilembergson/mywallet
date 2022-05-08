@@ -3,6 +3,7 @@ import { useContext, useState } from "react"
 import { Button, Form, Input, Label, Logo, MainLoginRegister } from "../../comonents/StyledComponents"
 import UserContext from "../../contexts/UserContext"
 import axios from "axios"
+import { API_URL } from "../../CommonVariables"
 
 export default function Login(){
     const navigate = useNavigate()
@@ -13,7 +14,7 @@ export default function Login(){
 
     function signIn(e){
         e.preventDefault()
-        const promise = axios.post('http://localhost:5000/signin', {
+        const promise = axios.post(`${API_URL}/signin`, {
             email: email,
             password: password
         })

@@ -3,20 +3,19 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom"
 
 import { Button, Form, Input, Label, Logo, MainLoginRegister } from "../../comonents/StyledComponents";
+import { API_URL } from "../../CommonVariables.js";
 
 export default function SignUp(){
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [repeatPassword, setRepeatPassword] = useState('')
-
     const navigate = useNavigate()
-    //const URL = process.env.BASE_URL
 
     function signUp(e){
         e.preventDefault()
 
-        const promise = axios.post(`http://localhost:5000/signup`, {
+        const promise = axios.post(`${API_URL}/signup`, {
             name: name,
             email: email,
             password: password,
