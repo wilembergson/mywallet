@@ -42,7 +42,7 @@ export default function SignUp(){
                         placeholder="Email"
                         value={email}
                         onChange={e => setEmail(e.target.value)}
-                        required/>
+                        required/>  
 
                 <Input  type="password"
                         placeholder="Senha"
