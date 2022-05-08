@@ -12,7 +12,7 @@ export default function NewExit(){
             <Form>
                 <Input type="text" placeholder="Valor"/>
                 <Input type="text" placeholder="Descrição"/>
-                <Button onClick={()=> navigate('/')}>Salvar saída</Button>
+                <Button onClick={()=> navigate('/main-screen')}>Salvar saída</Button>
             </Form>
         </Main>
     )

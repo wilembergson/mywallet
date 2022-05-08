@@ -12,7 +12,7 @@ export default function NewDeposit(){
             <Form>
                 <Input type="text" placeholder="Valor"/>
                 <Input type="text" placeholder="Descrição"/>
-                <Button onClick={()=> navigate('/')}>Salvar entrada</Button>
+                <Button onClick={()=> navigate('/main-screen')}>Salvar entrada</Button>
             </Form>
         </Main>
     )

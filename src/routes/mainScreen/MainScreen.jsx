@@ -4,21 +4,32 @@ import {AiOutlinePlusCircle} from 'react-icons/ai'
 import {AiOutlineMinusCircle} from 'react-icons/ai'
 import {useNavigate} from 'react-router-dom'
 import styled from 'styled-components'
+import { useContext } from "react"
+import UserContext from "../../contexts/UserContext";
 
 
 export default function MainScreen(){
     const navigate = useNavigate()
+    const {userName, setUserName, setToken} = useContext(UserContext)
+
+    function logOut(){
+        setUserName('')
+        setToken('')
+        navigate('/')
+    }
 
     return(
         <Main>
             <Header>
-                <Title>Olá, Fulano</Title>
-                <AiOutlineExport size={35} color={'#FFFFFF'}/>
+                <Title>Olá, {userName}</Title>
+                <div onClick={()=> logOut()}>
+                    <AiOutlineExport size={35} color={'#FFFFFF'}/>
+                </div>
             </Header>
             <Balance/>
             <Footer>
                 <Operation onClick={()=> navigate('/new-deposit')}>
-                    <AiOutlinePlusCircle size={25}/>
+                    <AiOutlinePlusCircle size={25}/>                    
                     <Label>Nova</Label>
                     entrada
                 </Operation>

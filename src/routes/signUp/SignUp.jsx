@@ -11,7 +11,7 @@ export default function SignUp(){
     const [repeatPassword, setRepeatPassword] = useState('')
 
     const navigate = useNavigate()
-    const URL = process.env.BASE_URL
+    //const URL = process.env.BASE_URL
 
     function signUp(e){
         e.preventDefault()
@@ -24,7 +24,7 @@ export default function SignUp(){
         })
         promise.then(response => {
             alert(response.data)
-            navigate('/login')
+            navigate('/')
         })
         promise.catch(e => alert(e.response.data.message))
     }
@@ -59,7 +59,7 @@ export default function SignUp(){
 
                 <Button type="submit">Cadastrar-se</Button>
             </Form>
-            <Label  onClick={()=> navigate('/login')}>Já tem uma conta? Entre agora!</Label>
+            <Label  onClick={()=> navigate('/')}>Já tem uma conta? Entre agora!</Label>
         </MainLoginRegister>
     )
 }
