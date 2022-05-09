@@ -1,19 +1,22 @@
-import { Header, Main, Title } from "../../comonents/StyledComponents";
+
 import {AiOutlineExport} from 'react-icons/ai'
 import {AiOutlinePlusCircle} from 'react-icons/ai'
 import {AiOutlineMinusCircle} from 'react-icons/ai'
 import {useNavigate} from 'react-router-dom'
 import styled from 'styled-components'
 import { useContext, useEffect, useState } from "react"
-import UserContext from "../../contexts/UserContext";
 import axios from "axios";
+
+import UserContext from "../../contexts/UserContext";
 import { API_URL } from "../../CommonVariables";
 import BalanceItem from "../../comonents/balanceItem/BalanceItem";
+import { Header, Main, Title } from "../../comonents/StyledComponents";
 
 export default function MainScreen(){
     const navigate = useNavigate()
     const {token, userName, setUserName, setToken} = useContext(UserContext)
     const [balanceList, setBalanceList] = useState([])
+    const [total, setTotal] = useState(0)
 
     useEffect(()=>{
         const promise = axios.get(`${API_URL}/operations`,
@@ -22,9 +25,24 @@ export default function MainScreen(){
                 Authorization: `Bearer ${token}`
             }
         })
-        promise.then(response => setBalanceList(response.data))
+        promise.then(response => {
+            setBalanceList(response.data)
+            getTotal(response.data)
+        })
         promise.catch(error => console.log(error.response))
     },[])
+
+    function getTotal(list){
+        let total = 0
+        list.map(item =>{
+            if(item.type === 'credit'){
+                total += parseFloat(item.value)
+            }else{
+                total -= parseFloat(item.value)
+            }
+        })
+        setTotal(total.toFixed(2))
+    }
 
     function logOut(){
         setUserName('')
@@ -41,11 +59,20 @@ export default function MainScreen(){
                 </div>
             </Header>
             <Balance>
-                {
-                    balanceList.map(item => <BalanceItem item={item}/>)
-                }
-                <LabelTotal>SALDO</LabelTotal>
-                <Total>1547,21</Total>
+                {balanceList.length !== 0 ? 
+                <>
+                    <ListBalance>
+                         {
+                             balanceList.map(item => <BalanceItem item={item}/>)
+                         }
+                    </ListBalance>
+                    <LabelTotal>SALDO</LabelTotal>
+                    <Total color={total >= 0? '#03AC00': '#C70000'}>{total}</Total>
+                </>:
+                <>
+                    <InitialStatus>Não há registros de</InitialStatus>
+                    <InitialStatus>entrada ou daida</InitialStatus>
+                </>}  
             </Balance>
             <Footer>
                 <Operation onClick={()=> navigate('/new-deposit')}>
@@ -64,6 +91,10 @@ export default function MainScreen(){
 }
 
 const Balance = styled.div`
+    display: flex;
+    justify-content: center;
+    aling-items: center;
+    flex-direction: column;
     width: 100%;
     height:420px;
     background: #FFFFFF;
@@ -71,10 +102,19 @@ const Balance = styled.div`
     margin-bottom:40px;
     border-radius: 5px;
     position: relative;
+    overflow: hidden;
+`
+const ListBalance = styled.div`
+    position: absolute;
+    background: #FFFFFF;
+    width: 100%;
+    height: 87%;
+    overflow-y: scroll;
 `
 const Footer = styled.footer`
     display: flex;
-    width: 92%;
+    justify-content: center;
+    width: 100%;
     position: fixed;
     bottom: 0;
     padding-bottom: 10px;
@@ -83,7 +123,7 @@ const Operation = styled.div`
     display: flex;
     aling-items: center;
     flex-direction: column;
-    width: 50%;
+    width: 35%;
     height: 100px;
     background: #A328D6;
     margin: 10px;
@@ -123,5 +163,16 @@ const Total = styled.label`
     position: absolute;
     bottom: 15px;
     right: 15px;
+    color: ${props => props.color};
+    background: #FFFFFF;
+`
+const InitialStatus = styled.label`
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    text-align: center;
+    color: #868686;
     background: #FFFFFF;
 `

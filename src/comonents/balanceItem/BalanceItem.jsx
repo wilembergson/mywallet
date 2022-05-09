@@ -9,7 +9,7 @@ export default function BalanceItem(props){
                 <Label color="#C6C6C6">{date}</Label>
                 <Label color="#000000">{description}</Label>
             </DateAndDescription>
-            <LabelRight color={type==='credit'? '#03AC00': '#C70000'}>{value}</LabelRight>
+            <LabelRight color={type==='credit'? '#03AC00': '#C70000'}>{parseFloat(value).toFixed(2)}</LabelRight>
         </Item>
     )
 }
